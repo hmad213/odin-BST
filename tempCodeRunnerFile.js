@@ -1,1 +1,1 @@
-(start + end) / 2
+(start + end) / 2;
