@@ -244,9 +244,9 @@ let print = function (node) {
   console.log(node.value);
 };
 
-function getRandomNumbers(){
+function getRandomNumbers() {
   let arr = [];
-  for(let i = 0; i < 30; i++){
+  for (let i = 0; i < 30; i++) {
     arr.push(Math.floor(Math.random() * 100));
   }
   return arr;
@@ -254,7 +254,9 @@ function getRandomNumbers(){
 
 let arr = getRandomNumbers();
 let t = new Tree(arr);
-console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+console.log(
+  t.isBalanced() ? "The tree is balanced" : "the tree is not balanced",
+);
 
 prettyPrint(t.root);
 
@@ -274,9 +276,13 @@ t.insert(111);
 t.insert(175);
 t.insert(163);
 
-console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+console.log(
+  t.isBalanced() ? "The tree is balanced" : "the tree is not balanced",
+);
 t.rebalance();
-console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+console.log(
+  t.isBalanced() ? "The tree is balanced" : "the tree is not balanced",
+);
 
 prettyPrint(t.root);
 
