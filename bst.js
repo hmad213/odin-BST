@@ -177,13 +177,13 @@ class Tree {
 
   preOrder(callback, node = this.root) {
     callback(node);
-    if (node.left != null) this.inOrder(callback, node.left);
-    if (node.right != null) this.inOrder(callback, node.right);
+    if (node.left != null) this.preOrder(callback, node.left);
+    if (node.right != null) this.preOrder(callback, node.right);
   }
 
   postOrder(callback, node = this.root) {
-    if (node.left != null) this.inOrder(callback, node.left);
-    if (node.right != null) this.inOrder(callback, node.right);
+    if (node.left != null) this.postOrder(callback, node.left);
+    if (node.right != null) this.postOrder(callback, node.right);
     callback(node);
   }
 
@@ -244,4 +244,47 @@ let print = function (node) {
   console.log(node.value);
 };
 
-let t = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+function getRandomNumbers(){
+  let arr = [];
+  for(let i = 0; i < 30; i++){
+    arr.push(Math.floor(Math.random() * 100));
+  }
+  return arr;
+}
+
+let arr = getRandomNumbers();
+let t = new Tree(arr);
+console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+
+prettyPrint(t.root);
+
+console.log("-------------------In Level Order-------------------");
+t.levelOrder(print);
+console.log("-------------------In Inorder-------------------");
+t.inOrder(print);
+console.log("-------------------In Preorder-------------------");
+t.preOrder(print);
+console.log("-------------------In Postorder-------------------");
+t.postOrder(print);
+
+t.insert(101);
+t.insert(124);
+t.insert(135);
+t.insert(111);
+t.insert(175);
+t.insert(163);
+
+console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+t.rebalance();
+console.log(t.isBalanced() ? "The tree is balanced" : "the tree is not balanced");
+
+prettyPrint(t.root);
+
+console.log("-------------------In Level Order-------------------");
+t.levelOrder(print);
+console.log("-------------------In Inorder-------------------");
+t.inOrder(print);
+console.log("-------------------In Preorder-------------------");
+t.preOrder(print);
+console.log("-------------------In Postorder-------------------");
+t.postOrder(print);
